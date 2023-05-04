@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>CurrencyConverter</title>
+{% endblock %}
+
+{% block body %}
+<h1>CurrencyConverter</h1>
+<h2>USD to SEK</h2>
+<form action="/" method="POST">
+    <input type="text" name="baseValue" placeholder="Write amount">USD
+    <input type="Submit" value="Convert">
+</form>
+<h2>{{newValue}} SEK</h2>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/script.js')}}"></script>
+{% endblock %}
