@@ -11,6 +11,15 @@
     <input type="text" name="baseValue" placeholder="Write amount">USD
     <input type="Submit" value="Convert">
 </form>
+<form action="/" method="POST">
+    <select name="rate" id="rate">
+        <option value="10.20" selected>SEK</option>
+        <option value="0.91">EUR</option>
+        <option value="0.79">GBP</option>
+        <option value="6.75">DKK</option>
+        <input type="Submit" value="Select">
+    </select>
+</form>
 <h2>{{newValue}} SEK</h2>
 
 <script type="text/javascript" src="{{ url_for('static', filename='js/script.js')}}"></script>

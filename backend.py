@@ -8,12 +8,14 @@
 #     newValue = baseValue * rate[toCurrency]
 #     return newValue
 
-def convertCurrency(baseValue:float):
-    newValue = float(baseValue) * 10.25
+
+def convertCurrency(baseValue:float, rate:float):
+    newValue = float(baseValue) * float(rate)
     return newValue
 
 
 def getRates(baseCurrency):
+
     # Make request to api with baseCurrency
     # Return json data
     return 0
