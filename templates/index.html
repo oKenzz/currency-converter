@@ -13,14 +13,14 @@
 </form>
 <form action="/" method="POST">
     <select name="rate" id="rate">
-        <option value="10.20" selected>SEK</option>
-        <option value="0.91">EUR</option>
-        <option value="0.79">GBP</option>
-        <option value="6.75">DKK</option>
+        <option value='{"rate": 10.20, "currency": "SEK"}'>SEK</option>
+        <option value='{"rate": 0.91, "currency": "EUR"}'>EUR</option>
+        <option value='{"rate": 0.79, "currency": "GBP"}'>GBP</option>
+        <option value='{"rate": 6.75, "currency": "DKK"}'>DKK</option>
         <input type="Submit" value="Select">
     </select>
 </form>
-<h2>{{newValue}} SEK</h2>
+<h2>{{newValue}} {{currency}}</h2>
 
 <script type="text/javascript" src="{{ url_for('static', filename='js/script.js')}}"></script>
 {% endblock %}
