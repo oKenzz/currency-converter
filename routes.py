@@ -14,9 +14,9 @@ newValue = 0
 
 @routes.route('/')
 def home():
-    if (baseValue == 0 and rate == 0 and currency == "" and newValue == 0):
+    # if (baseValue == 0 and rate == 0 and currency == "" and newValue == 0):
         return render_template("index.html")
-    return render_template("index.html", newValue=newValue, currency=currency)
+    # return render_template("index.html", newValue=newValue, currency=currency)
 
 @routes.route('/newValue', methods=['POST'])
 def getNewValue():
@@ -38,3 +38,8 @@ def updateData():
     global newValue
     newValue = backend.convertCurrency(baseValue,rate)
     return redirect('/')
+
+@routes.route('/data')
+def data():
+    data = {"newValue": newValue, "currency": currency}
+    return data
