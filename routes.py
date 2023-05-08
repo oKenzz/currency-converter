@@ -10,20 +10,31 @@ routes = Blueprint(__name__, "server")
 baseValue = 0
 rate = 0
 currency=""
+newValue = 0
 
-@routes.route('/',methods=["POST", "GET"])
+@routes.route('/')
 def home():
-    global baseValue
-    global rate
-    global currency
-    newValue = 0
-    print(request.form)
-    if request.method=="POST":
-        if 'baseValue' in request.form:
-            baseValue = request.form['baseValue']
-            newValue = backend.convertCurrency(baseValue, rate)
-        elif 'rate' in request.form:
-            data = json.loads(request.form['rate'])
-            rate = data['rate']
-            currency = data['currency']
+    if (baseValue == 0 and rate == 0 and currency == "" and newValue == 0):
+        return render_template("index.html")
     return render_template("index.html", newValue=newValue, currency=currency)
+
+@routes.route('/newValue', methods=['POST'])
+def getNewValue():
+    global baseValue
+    baseValue = request.form['baseValue']
+    return redirect('/updateData')
+
+@routes.route('/rate', methods=['POST'])
+def updateRate():
+    global rate       
+    global currency
+    data = json.loads(request.form['rate'])
+    rate = data['rate']
+    currency = data['currency']
+    return redirect('/updateData')
+
+@routes.route('/updateData')
+def updateData():
+    global newValue
+    newValue = backend.convertCurrency(baseValue,rate)
+    return redirect('/')
