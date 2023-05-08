@@ -6,18 +6,16 @@
 
 {% block body %}
 <h1>CurrencyConverter</h1>
-<h2>USD to SEK</h2>
-<form action="/newValue" method="POST">
-    <input type="text" name="baseValue" placeholder="Write amount">USD
-    <input type="Submit" value="Convert">
+<form id="baseValueForm"action="/newValue" method="POST">
+    <input id="inputBaseValue" type="text" name="baseValue" placeholder="Write amount">USD
 </form>
-<form action="/rate" method="POST">
-    <select name="rate" id="rate">
+<form id="rateForm" action="/rate" method="POST">
+    <select name="rate" id="rateMenu">
+        <option selected>Select Currency</option>
         <option value='{"rate": 10.20, "currency": "SEK"}'>SEK</option>
         <option value='{"rate": 0.91, "currency": "EUR"}'>EUR</option>
         <option value='{"rate": 0.79, "currency": "GBP"}'>GBP</option>
         <option value='{"rate": 6.75, "currency": "DKK"}'>DKK</option>
-        <input type="Submit" value="Select">
     </select>
 </form>
 <h2>{{newValue}} {{currency}}</h2>

@@ -1,23 +1,16 @@
-function SelectStateChanged()
-    const selectElem = document.getElementsbyId('rate')
-    selectElem.addEventListener('submit', (event) => {
-        event.preventdefault();
+const rateMenu = document.getElementById("rateMenu");
+const baseValue = document.getElementById('inputBaseValue');
+const baseValueForm = document.getElementById("baseValueForm");
+const rateForm = document.getElementById("rateForm");
 
-        const selecetedValue =selectElem.elements['rate'].value;
+function submitForm(){
+    rateMenu.addEventListener("change", function() {
+        rateForm.submit();
+      });
+      
+    baseValue.addEventListener("change", function() {
+        baseValueForm.submit();
+    })   
+}
 
-        fetch('/rate', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ value: selectedValue })
-          })
-          .then(response => {
-            if (response.ok) {
-              console.log('Success');
-            } else {
-              console.error('Error');
-            }
-          })
-          .catch(error => console.error(error));
-    });
+window.onload = submitForm

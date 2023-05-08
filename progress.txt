@@ -1,0 +1,8 @@
+Updating data
+    - Dont re render_template
+    - Change HTML elements value instead
+
+Create data route json
+    - javascript get data
+    - Display new data by changing HTML elements
+    - Data: {"newValue": newValue, "currency", currency}
